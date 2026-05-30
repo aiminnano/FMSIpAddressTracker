@@ -3,7 +3,7 @@ import bgmobile from '../../images/pattern-bg-mobile.png'
 import arrow from '../../images/icon-arrow.svg'
 import Result from './Result'
 
-function Searchbar(){
+function Searchbar({ip, setIp, onSearch, ipData}){
     return (
         <>
             <div className="grid place-items-center font-rubik">
@@ -14,11 +14,11 @@ function Searchbar(){
                         <div className='flex flex-col items-center gap-5 w-full sm:gap-3.5'>
                             <h1 className='font-semibold text-white text-[26px] sm:text-[32px]'>IP Address Tracker</h1>
                             <div className='h-[58px] flex w-full mt-2 sm:max-w-[500px]'>
-                                <input type="text" className='w-full pr-5 pl-5 bg-white rounded-l-[.90rem] h-full text-lg'  placeholder='Search for any IP address or domain' />
-                                <button type='button' className=' pr-5  pl-5 bg-black rounded-r-[.95rem] h-full max-w-[56px] w-full flex items-center justify-center'><img src={arrow}  alt="arrow-icon" /></button>
+                                <input type="text" className='w-full pr-5 pl-5 bg-white rounded-l-[.90rem] h-full text-lg' value={ip} onChange={(e) => setIp(e.target.value)} placeholder='Search for any IP address or domain' />
+                                <button type='button' onClick={onSearch} className=' pr-5  pl-5 bg-black rounded-r-[.95rem] h-full max-w-[56px] w-full flex items-center justify-center'><img src={arrow}  alt="arrow-icon" /></button>
                             </div>
                         </div>
-                        <Result />
+                        <Result ipData={ipData}/>
                     </div>
                 </div>
             </div>
